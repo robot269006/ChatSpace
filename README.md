@@ -31,29 +31,27 @@ Things you may want to cover:
   # Entity
   ### 1. User
   ### 2. Group
-  ### 3. Messages(chat/thread)
-  ### 4. Images
-  ### 5. Comments(chat itself)
+  ### 3. Messages(chat/thread as whole)
+  ### 4. Comments(chat/image itself)
 
   # Relation
   ## 1. User
-    ### belongs_to :user-group
-    ### has_many :groups, :messages, :images, :comments
+    ### belongs_to :none
+    ### has_many :messages, :comments
+    ### has_many :groups, through: user-group
   ## 2. Group
-    ### belongs_to :user-group
-    ### has_many :users, :messages
-  ## 3. Messages(chat/thread)
+    ### belongs_to :none
+    ### has_many :messages
+    ### has_many :users, through: user-group
+  ## 3. Messages(chat/thread as whole)
     ### belongs_to :user, :group
-    ### has_many :comments, :images,
-  ## 4. Images
-    ### belongs_to :user, :message
-    ### has_many :none
-  ## 5. Comments(chat itself)
+    ### has_many :comments
+  ## 4. Comments(chat/image itself)
     ### belongs_to :user, :message
     ### has_many :none
   ## 2.5 User-Group(Mid-table)
-    ### belongs_to :none
-    ### has_many :user, :group
+    ### belongs_to :user, :group
+    ### has_many :none
 
   # Tables
   ## 1. User
@@ -66,7 +64,7 @@ Things you may want to cover:
    | password      |        text |
    | created_at    |      string |
    | updated_at    |      string |
-   | user-group id |      string |
+   | user-group id |     integer |
 
   ## 2. Group
    | Column        | Type        |
@@ -77,7 +75,7 @@ Things you may want to cover:
    | password      |        text |
    | created_at    |      string |
    | updated_at    |      string |
-   | user-group id |      string |
+   | user-group id |     integer |
 
   ## 3. Messages
    | Column        | Type        |
@@ -87,30 +85,27 @@ Things you may want to cover:
    | body          |        text |
    | created_at    |      string |
    | updated_at    |      string |
-   | user_id       |      string |
-   | group_id      |      string |
+   | user_id       |     integer |
+   | group_id      |     integer |
 
-  ## 4. Images
-   | Column        | Type        |
-   |:--|:--|
-   | id            |     integer |
-   | imagetitle    |        text |
-   | imagefile     |      string |
-   | created_at    |      string |
-   | updated_at    |      string |
-   | user_id       |      string |
-   | message_id    |      string |
-
-  ## 5. Comments
+  ## 4. Comments
    | Column        | Type        |
    |:--|:--|
    | id            |     integer |
    | commenttitle  |        text |
    | body          |        text |
+   | imagefile     |      string |
    | created_at    |      string |
    | updated_at    |      string |
-   | user_id       |      string |
-   | message_id    |      string |
+   | user_id       |     integer |
+   | message_id    |     integer |
+
+  ## 2.5. User-group
+   | Column        | Type        |
+   |:--|:--|
+   | id            |     integer |
+   | user_id       |     integer |
+   | group_id      |     integer |
 
 
 * Database initialization
