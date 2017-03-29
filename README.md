@@ -61,6 +61,7 @@ Things you may want to cover:
    |:--|:--|
    | id            |     integer |
    | name          |        text |
+   | body          |        text |
    | e-mail        |        text |
    | password      |        text |
    | created_at    |      string |
@@ -72,6 +73,7 @@ Things you may want to cover:
    |:--|:--|
    | id            |     integer |
    | groupname     |        text |
+   | body          |        text |
    | password      |        text |
    | created_at    |      string |
    | updated_at    |      string |
@@ -82,6 +84,7 @@ Things you may want to cover:
    |:--|:--|
    | id            |     integer |
    | threadname    |        text |
+   | body          |        text |
    | created_at    |      string |
    | updated_at    |      string |
    | user_id       |      string |
@@ -92,6 +95,7 @@ Things you may want to cover:
    |:--|:--|
    | id            |     integer |
    | imagetitle    |        text |
+   | imagefile     |      string |
    | created_at    |      string |
    | updated_at    |      string |
    | user_id       |      string |
@@ -102,6 +106,7 @@ Things you may want to cover:
    |:--|:--|
    | id            |     integer |
    | commenttitle  |        text |
+   | body          |        text |
    | created_at    |      string |
    | updated_at    |      string |
    | user_id       |      string |
