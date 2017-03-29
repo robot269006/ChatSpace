@@ -38,18 +38,18 @@ Things you may want to cover:
   ## 1. User
     ### belongs_to :none
     ### has_many :messages, :comments
-    ### has_many :groups, through: user-group
+    ### has_many :groups, through: user_group
   ## 2. Group
     ### belongs_to :none
     ### has_many :messages
-    ### has_many :users, through: user-group
+    ### has_many :users, through: user_group
   ## 3. Messages(chat/thread as whole)
     ### belongs_to :user, :group
     ### has_many :comments
   ## 4. Comments(chat/image itself)
     ### belongs_to :user, :message
     ### has_many :none
-  ## 2.5 User-Group(Mid-table)
+  ## 2.5 User_Group(Mid-table)
     ### belongs_to :user, :group
     ### has_many :none
 
@@ -57,53 +57,40 @@ Things you may want to cover:
   ## 1. User
    | Column        | Type        |
    |:--|:--|
-   | id            |     integer |
    | name          |        text |
    | body          |        text |
    | e-mail        |        text |
    | password      |        text |
-   | created_at    |      string |
-   | updated_at    |      string |
    | user-group id |     integer |
 
   ## 2. Group
    | Column        | Type        |
    |:--|:--|
-   | id            |     integer |
    | groupname     |        text |
    | body          |        text |
    | password      |        text |
-   | created_at    |      string |
-   | updated_at    |      string |
    | user-group id |     integer |
 
   ## 3. Messages
    | Column        | Type        |
    |:--|:--|
-   | id            |     integer |
    | threadname    |        text |
    | body          |        text |
-   | created_at    |      string |
-   | updated_at    |      string |
    | user_id       |     integer |
    | group_id      |     integer |
 
   ## 4. Comments
    | Column        | Type        |
    |:--|:--|
-   | id            |     integer |
    | commenttitle  |        text |
    | body          |        text |
    | imagefile     |      string |
-   | created_at    |      string |
-   | updated_at    |      string |
    | user_id       |     integer |
    | message_id    |     integer |
 
-  ## 2.5. User-group
+  ## 2.5. User_group
    | Column        | Type        |
    |:--|:--|
-   | id            |     integer |
    | user_id       |     integer |
    | group_id      |     integer |
 
