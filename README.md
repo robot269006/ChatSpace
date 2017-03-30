@@ -31,68 +31,55 @@ Things you may want to cover:
   # Entity
   ### 1. User
   ### 2. Group
-  ### 3. Messages(chat/thread as whole)
-  ### 4. Comments(chat/image itself)
+  ### 3. Messages
 
   # Relation
   ## 1. User
     ### belongs_to :none
-    ### has_many :messages, :comments
-    ### has_many :groups, through: user_group
+    ### has_many :messages, :group_user
+    ### has_many :groups, through: group_user
   ## 2. Group
     ### belongs_to :none
-    ### has_many :messages
-    ### has_many :users, through: user_group
-  ## 3. Messages(chat/thread as whole)
+    ### has_many :messages, :group_user
+    ### has_many :users, through: group_user
+  ## 3. Messages
     ### belongs_to :user, :group
-    ### has_many :comments
-  ## 4. Comments(chat/image itself)
-    ### belongs_to :user, :message
     ### has_many :none
-  ## 2.5 User_Group(Mid-table)
+  ## 1.5 Group_user(Mid-table)
     ### belongs_to :user, :group
     ### has_many :none
 
   # Tables
-  ## 1. User
-   | Column        | Type        |
-   |:--|:--|
-   | name          |        text |
-   | body          |        text |
-   | e-mail        |        text |
-   | password      |        text |
-   | user-group id |     integer |
+  ## 1. User (* Via use of "devise" gem)
+   | Column        | Type        | Settings        |
+   |:--|:--|:--|
+   | name          |        text |         not null|
+   | body          |        text |                 |
+   | e-mail        |        text |         not null|
+   | password      |        text |         not null|
+   | group_user id |     integer |  ref:foreign_key|
 
   ## 2. Group
-   | Column        | Type        |
-   |:--|:--|
-   | groupname     |        text |
-   | body          |        text |
-   | password      |        text |
-   | user-group id |     integer |
+   | Column        | Type        | Settings        |
+   |:--|:--|:--|
+   | name          |        text |         not null|
+   | body          |        text |                 |
+   | group_user id |     integer |  ref:foreign_key|
 
   ## 3. Messages
-   | Column        | Type        |
-   |:--|:--|
-   | threadname    |        text |
-   | body          |        text |
-   | user_id       |     integer |
-   | group_id      |     integer |
+   | Column        | Type        | Settings        |
+   |:--|:--|:--|
+   | title         |        text |         not null|
+   | body          |        text |                 |
+   | imagefile     |      string |                 |
+   | user_id       |     integer |  ref:foreign_key|
+   | group_id      |     integer |  ref:foreign_key|
 
-  ## 4. Comments
-   | Column        | Type        |
-   |:--|:--|
-   | commenttitle  |        text |
-   | body          |        text |
-   | imagefile     |      string |
-   | user_id       |     integer |
-   | message_id    |     integer |
-
-  ## 2.5. User_group
-   | Column        | Type        |
-   |:--|:--|
-   | user_id       |     integer |
-   | group_id      |     integer |
+  ## 1.5. Group_user
+   | Column        | Type        | Settings        |
+   |:--|:--|:--|
+   | user_id       |     integer |  ref:foreign_key|
+   | group_id      |     integer |  ref:foreign_key|
 
 
 * Database initialization
