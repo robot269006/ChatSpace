@@ -1,0 +1,15 @@
+@mixin font-set($size:12px ,$color:#FFFFFF ){
+  font-size: $size;
+  font-color: $color;
+}
+
+@mixin padding-set($width:20px){
+  padding: 0, $width;
+}
+
+@mixin clearfix(){
+  contents: block;
+  display: both;
+}
+
+//settings of clearfix

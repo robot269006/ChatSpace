@@ -90,8 +90,14 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
-
+* Stylesheets
+  ##Application.scss: Imports 6 partial files (3 are settings, 3 are stylesheets)
+  ###1. _reset => resets default settings to prevent cross-browser problem
+  ###2. _mixins => mixins settings
+  ###3. _variables => variables settings
+  ###4. icon   => styling for icon
+  ###5. button => styling for buttons
+  ###6. body   => styling for all the other body parts
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
