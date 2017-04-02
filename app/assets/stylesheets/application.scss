@@ -1,8 +1,11 @@
-@import "./reset";
-@import "./mixins";
-@import "./variables";
-@import "button";
-@import "icon";
-@import "body";
+//CSS reset
+@import "reset.scss";
 
-//読み込み順番の解決
+//Core
+@import "mixins.scss";
+@import "variables.scss";
+
+//Styling
+@import "button.scss";
+@import "icon.scss";
+@import "body.scss";
