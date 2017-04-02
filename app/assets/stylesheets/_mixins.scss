@@ -1,6 +1,6 @@
-@mixin font-set($size:12px ,$color:#FFFFFF ){
+@mixin fontset($size:12px ,$color:#FFFFFF ){
   font-size: $size;
-  font-color: $color;
+  color: $color;
 }
 
 @mixin clearfix(){
