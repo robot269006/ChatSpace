@@ -1,0 +1,38 @@
+%wrapper
+  %header コンテンツが作成されました
+  %navi
+    %navi__top
+      %p.username Ryota Nakamura
+      %icon
+        %icon__edit <i class="fa fa-cog fa-lg"></i>
+        %icon__setting <i class="fa fa-pencil-square-o fa-lg"></i>
+    %navi__bottom
+      %message
+        %p.message__group Liberal Democrat Party
+        %p.message__body まだメッセージはありません
+      %message
+        %p.message__group Democratic Party
+        %p.message__body まだメッセージはありません
+      %message
+        %p.message__group Communist Party
+        %p.message__body まだメッセージはありません
+  %group
+    %group__top
+      %groupdata
+        %p.groupdata__name Sampleグループ
+        %p.groupdata__memberlist Taro Aso, Tomomi Inada
+      %a.editbutton(href="") Edit
+    %group__middle
+      %individualmessage
+        %p.individualmessage__name Kakuei Tanaka
+        %p.individualmessage__date 2017/01/20 00:00:00
+        %p.individualmessage__body Rockheed
+      %individualmessage
+        %p.individualmessage__name Shinzo Abe
+        %p.individualmessage__date 2017/01/20 00:00:00
+        %p.individualmessage__body Moritomo
+    %group__bottom
+      %write
+        %textarea.write__text type a message
+        %write____icon <i class="fa fa-picture-o" aria-hidden="true"></i>
+      %a.sendbutton(href="") Send
