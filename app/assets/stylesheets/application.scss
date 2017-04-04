@@ -5,6 +5,11 @@
 @import "mixins.scss";
 @import "variables.scss";
 
+//Font-awesome
+@import "font-awesome";
+@import "font-awesome-sprockets";
+//font-awesome needs to be fixed, since it's not displayed properly
+
 //Styling
 @import "button.scss";
 @import "icon.scss";
