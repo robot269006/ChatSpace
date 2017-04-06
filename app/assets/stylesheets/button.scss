@@ -2,8 +2,12 @@
   height: 40px;
   background-color: $white-bg;
   @include fontset(16px,$blue-bg);
-  padding: 0px 20px;
+  text-align: center;
+  line-height: 40px;
+  padding: 0 20px;
   margin: 28px 0 0;
+  border-color: $blue-bg;
+  border: 2px solid;
   float: right;
 }
 
@@ -12,5 +16,8 @@
   background-color: $blue-bg;
   @include fontset(16px,$white-bg);
   text-align: center;
-  float: left;
+  line-height: 50px;
+  padding: 0 20px;
+  margin: 0 0 0 15px;
+  float: right;
 }

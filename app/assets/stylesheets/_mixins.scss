@@ -1,11 +1,11 @@
-@mixin fontset($size:12px ,$color:#FFFFFF ){
+@mixin fontset($size: 12px, $color: #FFFFFF) {
   font-size: $size;
   color: $color;
 }
 
-@mixin clearfix(){
-  contents: block;
-  display: both;
-}
+//@mixin clearfix(){
+//  contents: block;
+//  display: both;
+//}
 
 //settings of clearfix
