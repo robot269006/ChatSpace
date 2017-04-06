@@ -1,0 +1,23 @@
+.editbutton{
+  height: 40px;
+  background-color: $white-bg;
+  @include fontset(16px,$blue-bg);
+  text-align: center;
+  line-height: 40px;
+  padding: 0 20px;
+  margin: 28px 0 0;
+  border-color: $blue-bg;
+  border: 2px solid;
+  float: right;
+}
+
+.sendbutton{
+  height: 50px;
+  background-color: $blue-bg;
+  @include fontset(16px,$white-bg);
+  text-align: center;
+  line-height: 50px;
+  padding: 0 20px;
+  margin: 0 0 0 15px;
+  float: right;
+}
