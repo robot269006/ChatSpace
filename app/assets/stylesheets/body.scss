@@ -90,11 +90,11 @@
       background-color: #AAAAAA;
       padding: 20px 40px;
       .write {
-        width: calc(100vw - $nav-width - $bottom-padding);
+        width: calc(100vw - #{$nav-width} - #{$bottom-padding});
         padding: 0 10px;
         &__text {
           height: 50px;
-          width: calc(100vw - $nav-width - $bottom-padding - 125px);
+          width: calc(100vw - #{$nav-width} - #{$bottom-padding} - 125px);
           @include fontset(16px, #434A54);
           line-height: 50px;
           float: left;
