@@ -42,7 +42,7 @@
 
 
   .group {
-    width: calc(100vw - $nav-width);
+    width: calc(100vw - #{$nav-width});
     float: left;
     &__top {
       height: $top-height;
