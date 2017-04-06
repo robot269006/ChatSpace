@@ -11,10 +11,10 @@
 
 
   .navi {
-    width: 300px;
+    width: $nav-width;
     float: left;
     &__top {
-      height: 110px;
+      height: $top-height;
       background-color: #253141;
       padding: 0 20px;
       .username {
@@ -42,10 +42,10 @@
 
 
   .group {
-    width: calc(100vw - 300px);
+    width: calc(100vw - $nav-width);
     float: left;
     &__top {
-      height: 110px;
+      height: $top-height;
       border-color: #eeeeee;
       padding: 0 40px;
       border-bottom: solid 1px #eeeeee;
@@ -90,11 +90,11 @@
       background-color: #AAAAAA;
       padding: 20px 40px;
       .write {
-        width: calc(100vw - 300px - 80px);
+        width: calc(100vw - $nav-width - $bottom-padding);
         padding: 0 10px;
         &__text {
           height: 50px;
-          width: calc(100vw - 300px - 80px - 125px);
+          width: calc(100vw - $nav-width - $bottom-padding - 125px);
           @include fontset(16px, #434A54);
           line-height: 50px;
           float: left;
