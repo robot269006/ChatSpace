@@ -8,7 +8,9 @@
 //Font-awesome
 @import "font-awesome";
 @import "font-awesome-sprockets";
-//font-awesome needs to be fixed, since it's not displayed properly
+
+//Flash messages
+@import "flash.scss";
 
 //Styling
 @import "button.scss";
