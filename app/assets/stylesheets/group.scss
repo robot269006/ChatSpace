@@ -2,7 +2,7 @@
   width: 980px;
   margin: 60px auto;
   padding: 40px;
-  background-color: #fff;
+  background-color: $white-bg;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
@@ -87,7 +87,7 @@
       cursor: pointer;
 
       &.chat-group-user__btn--add {
-        color: #38aef0;
+        color: $blue-bg;
       }
 
       &.chat-group-user__btn--remove {
@@ -99,8 +99,8 @@
   .chat-group-form__action-btn {
     display: inline-block;
     padding: 12px 20px;
-    color: #fff;
-    background-color: #38aef0;
+    color: $white-bg;
+    background-color: $blue-bg;
     border: 0;
   }
 }
