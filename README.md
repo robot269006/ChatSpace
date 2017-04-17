@@ -63,7 +63,6 @@ Things you may want to cover:
    | Column        | Type        | Settings        |
    |:--|:--|:--|
    | name          |        text |         not null|
-   | body          |        text |                 |
    | group_user id |     integer |  ref:foreign_key|
 
   ## 3. Messages
