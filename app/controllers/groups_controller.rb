@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.create(create_params)
+    redirect_to controller: :top, action: :index
   end
 
   private
