@@ -4,9 +4,6 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def edit
-  end
-
   def create
     @group = Group.new(create_params)
     if @group.save
@@ -14,6 +11,20 @@ class GroupsController < ApplicationController
     else
       flash[:alert]="チャットグループの作成に失敗しました"
       render :new
+    end
+  end
+
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update
+      redirect_to root_path, notice: "チャットグループを編集しました"
+    else
+      flash[:alert]="チャットグループの編集に失敗しました"
+      render :edit
     end
   end
 
