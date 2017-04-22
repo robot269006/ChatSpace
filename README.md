@@ -68,8 +68,7 @@ Things you may want to cover:
   ## 3. Messages
    | Column        | Type        | Settings        |
    |:--|:--|:--|
-   | title         |        text |         not null|
-   | body          |        text |                 |
+   | body          |        text |         not null|
    | imagefile     |      string |                 |
    | user_id       |     integer |  ref:foreign_key|
    | group_id      |     integer |  ref:foreign_key|
