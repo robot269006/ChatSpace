@@ -22,18 +22,7 @@
         %p.groupdata__memberlist Taro Aso, Tomomi Inada
       %a.editbutton(href="") Edit
     .group__middle
-      .individualmessage
-        %p.individualmessage__name Kakuei Tanaka
-        %p.individualmessage__date 2017/01/20 00:00:00
-        %p.individualmessage__body Rockheed
-      .individualmessage
-        %p.individualmessage__name Shinzo Abe
-        %p.individualmessage__date 2017/01/20 00:00:00
-        %p.individualmessage__body Moritomo
-      .individualmessage
-        %p.individualmessage__name Noboru Takeshita
-        %p.individualmessage__date 2017/01/20 00:00:00
-        %p.individualmessage__body Recruit
+      = render partial: 'messages/messages'
     .group__bottom
       .write
         %textarea.write__text type a message
