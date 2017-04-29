@@ -6,8 +6,15 @@ class MessagesController < ApplicationController
     @group = Group.includes(:user)
   end
 
+  def new; end
+
   def create
     @message = Messages.new(create_params)
+    if @message.save
+      redirect_to root_path, notice: "メッセージが作成されました"
+    else
+      flash [:alert]="メッセージの作成に失敗しました"
+      render :new
   end
 
   private
