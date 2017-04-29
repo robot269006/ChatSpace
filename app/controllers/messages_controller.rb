@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
     params.require(:messages).permit(:body).merge(group_id: params[:group_id], user_id: current_user.id)
   end
   def group_params
-    @group = Group.find(params[:group_id])
+    @group = Group.find(params[:groups_id])
   end
 
 end
