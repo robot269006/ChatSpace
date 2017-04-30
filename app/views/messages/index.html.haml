@@ -8,18 +8,20 @@
     .navi__bottom
       - @groups.each do |g|
         %ul.message
+        = link_to group_messages_path(g) do
           %p.message__group= g.name
-          %p.message__body= 'Fixme Fixme'
+          %p.message__body= g.messages.all.last.body
   .group
     .group__top
       .groupdata
         %p.groupdata__name= @group.name
-        %p.groupdata__memberlist Taro Aso, Tomomi Inada
+        - @group.users.each do |n|
+          %p.groupdata__memberlist= n.name
       = link_to 'Edit', edit_group_path(@group), class: 'editbutton'
     .group__middle
       - @group.messages.each do |m|
         %ul.individualmessage
-          %li.individualmessage__name= 'Fixme Fixme'
+          %li.individualmessage__name= m.user.name
           %li.individualmessage__date= m.created_at
           %li.individualmessage__body= m.body
     .group__bottom
