@@ -3,14 +3,13 @@ class MessagesController < ApplicationController
 
   def index
     @user = User.find(current_user.id)
-    @group = Group.includes(:user)
-    @groups = Group.all
+    @message = Message.new
   end
 
   def new; end
 
   def create
-    @message = Messages.new(create_params)
+    @message = Message.new(message_params)
     if @message.save
       redirect_to group_messages_path(@group), notice: "メッセージが作成されました"
     else
@@ -20,8 +19,8 @@ class MessagesController < ApplicationController
   end
 
   private
-  def create_params
-    params.require(:messages).permit(:body).merge(group_id: params[:group_id], user_id: current_user.id)
+  def message_params
+    params.require(:message).permit(:body).merge(group_id: params[:group_id], user_id: current_user.id)
   end
   def group_params
     @group = Group.find(params[:group_id])
