@@ -1,14 +1,14 @@
 .wrapper
   .navi
     .navi__top
-      %p.username= current_user.name
+      %p.username= @user.name
       .icon
         = link_to '', edit_user_registration_path, class: 'fa fa-cog icon__edit'
         = link_to '', new_user_registration_path, class: 'fa fa-pencil-square-o icon__setting'
     .navi__bottom
-      - @groups.each do |group|
+      - @groups.each do |g|
         %ul.message
-          %p.message__group= group.name
+          %p.message__group= g.name
           %p.message__body= 'Fixme Fixme'
   .group
     .group__top
@@ -17,14 +17,11 @@
         %p.groupdata__memberlist Taro Aso, Tomomi Inada
       = link_to 'Edit', edit_group_path(@group), class: 'editbutton'
     .group__middle
-      %ul.individualmessage
-        %li.individualmessage__name= "AAAA"
-        %li.individualmessage__date= "AAAA"
-        %li.individualmessage__body= "AAAA"
-      %ul.individualmessage
-        %li.individualmessage__name= "AAAA"
-        %li.individualmessage__date= "AAAA"
-        %li.individualmessage__body= "AAAA"
+      - @group.messages.each do |m|
+        %ul.individualmessage
+          %li.individualmessage__name= 'Fixme Fixme'
+          %li.individualmessage__date= m.created_at
+          %li.individualmessage__body= m.body
     .group__bottom
       = form_for [@group, @message], html: {class: 'write'} do |f|
         = f.text_field :body, class: 'write__text', placeholder: 'type a message'
