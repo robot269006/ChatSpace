@@ -6,15 +6,10 @@
         = link_to '', edit_user_registration_path, class: 'fa fa-cog icon__edit'
         = link_to '', new_user_registration_path, class: 'fa fa-pencil-square-o icon__setting'
     .navi__bottom
-      .message
-        %p.message__group Liberal Democrat Party
-        %p.message__body まだメッセージはありません
-      .message
-        %p.message__group Democratic Party
-        %p.message__body まだメッセージはありません
-      .message
-        %p.message__group Communist Party
-        %p.message__body まだメッセージはありません
+      - @groups.each do |group|
+        %ul.message
+          %p.message__group= group.name
+          %p.message__body= 'Fixme Fixme'
   .group
     .group__top
       .groupdata
