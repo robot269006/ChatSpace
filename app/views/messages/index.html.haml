@@ -3,8 +3,8 @@
     .navi__top
       %p.username= current_user.name
       .icon
-        .icon__edit <i class="fa fa-cog" aria-hidden="true"></i>
-        .icon__setting <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        = link_to '', edit_user_registration_path, class: 'fa fa-cog icon__edit'
+        = link_to '', new_user_registration_path, class: 'fa fa-pencil-square-o icon__setting'
     .navi__bottom
       .message
         %p.message__group Liberal Democrat Party
@@ -20,9 +20,16 @@
       .groupdata
         %p.groupdata__name= @group.name
         %p.groupdata__memberlist Taro Aso, Tomomi Inada
-      %a.editbutton(href="") Edit
+      = link_to 'Edit', edit_group_path(@group), class: 'editbutton'
     .group__middle
-      = render partial: 'messages/messages'
+      %ul.individualmessage
+          %li.individualmessage__name= "AAAA"
+          %li.individualmessage__date= "AAAA"
+          %li.individualmessage__body= "AAAA"
+      %ul.individualmessage
+          %li.individualmessage__name= "AAAA"
+          %li.individualmessage__date= "AAAA"
+          %li.individualmessage__body= "AAAA"
     .group__bottom
       .write
         %textarea.write__text type a message

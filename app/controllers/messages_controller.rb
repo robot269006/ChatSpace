@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @group = Group.includes(:user)
+    @groups = Group.all
   end
 
   def new; end
@@ -11,10 +12,11 @@ class MessagesController < ApplicationController
   def create
     @message = Messages.new(create_params)
     if @message.save
-      redirect_to root_path, notice: "メッセージが作成されました"
+      redirect_to group_messages_path(@group), notice: "メッセージが作成されました"
     else
-      flash [:alert]="メッセージの作成に失敗しました"
+      flash[:alert]="メッセージの作成に失敗しました"
       render :new
+    end
   end
 
   private
