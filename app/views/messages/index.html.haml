@@ -6,11 +6,7 @@
         = link_to '', edit_user_registration_path, class: 'fa fa-cog icon__edit'
         = link_to '', new_user_registration_path, class: 'fa fa-pencil-square-o icon__setting'
     .navi__bottom
-      - @groups.each do |g|
-        %ul.message
-        = link_to group_messages_path(g) do
-          %p.message__group= g.name
-          %p.message__body= g.messages.all.last.body
+      = render 'navibottom'
   .group
     .group__top
       .groupdata
@@ -19,11 +15,7 @@
           %p.groupdata__memberlist= n.name
       = link_to 'Edit', edit_group_path(@group), class: 'editbutton'
     .group__middle
-      - @group.messages.each do |m|
-        %ul.individualmessage
-          %li.individualmessage__name= m.user.name
-          %li.individualmessage__date= m.created_at.strftime("%Y年%m月%d日 %H時%M分")
-          %li.individualmessage__body= m.body
+      = render 'groupmiddle'
     .group__bottom
       = form_for [@group, @message], html: {class: 'write'} do |f|
         = f.text_field :body, class: 'write__text', placeholder: 'type a message'

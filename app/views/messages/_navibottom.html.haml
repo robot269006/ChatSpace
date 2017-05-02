@@ -1,0 +1,8 @@
+- @groups.each do |g|
+  %ul.message
+  = link_to group_messages_path(g) do
+    %p.message__group= g.name
+    - if g.messages.present?
+      %p.message__body= g.messages.all.last.body
+    - else
+      %p.message_body= "まだメッセージがありません"
