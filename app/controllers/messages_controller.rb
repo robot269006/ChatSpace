@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :group_params, only: [:index, :create]
+  before_action :set_group, only: [:index, :create]
 
   def index
     @groups = current_user.groups
@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
       redirect_to group_messages_path(@group), notice: "メッセージが作成されました"
     else
       @groups = current_user.groups
-      flash[:alert]="メッセージの作成に失敗しました"
+      flash.now[:alert]="メッセージの作成に失敗しました"
       render :index
     end
   end
@@ -23,7 +23,8 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:body).merge(group_id: params[:group_id], user_id: current_user.id)
   end
-  def group_params
+
+  def set_group
     @group = Group.find(params[:group_id])
   end
 
