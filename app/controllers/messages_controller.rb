@@ -14,7 +14,6 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to group_messages_path(@group), notice: "メッセージが作成されました"
     else
-      @groups = current_user.groups
       flash.now[:alert]="メッセージの作成に失敗しました"
       render :index
     end
