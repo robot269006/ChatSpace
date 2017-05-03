@@ -1,0 +1,4 @@
+%ul.individualmessage
+  %li.individualmessage__name= message.user.name
+  %li.individualmessage__date= message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  %li.individualmessage__body= message.body
