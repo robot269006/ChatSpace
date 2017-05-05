@@ -1,0 +1,23 @@
+.wrapper
+  .navi
+    .navi__top
+      %p.username= current_user.name
+      .icon
+        = link_to '', edit_user_registration_path, class: 'fa fa-cog icon__edit'
+        = link_to '', new_user_registration_path, class: 'fa fa-pencil-square-o icon__setting'
+    .navi__bottom
+      = render @groups
+  .group
+    .group__top
+      .groupdata
+        %p.groupdata__name= @group.name
+        - @group.users.each do |n|
+          %p.groupdata__memberlist= n.name
+      = link_to 'Edit', edit_group_path(@group), class: 'editbutton'
+    .group__middle
+      = render @messages
+    .group__bottom
+      = form_for [@group, @message], html: {class: 'write'} do |f|
+        = f.text_field :body, class: 'write__text', placeholder: 'type a message'
+        .write__icon <i class="fa fa-picture-o" aria-hidden="true"></i>
+        = f.submit 'Send', class: 'sendbutton'

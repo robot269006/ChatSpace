@@ -1,0 +1,9 @@
+.wrapper
+  .navi
+    .navi__top
+      %p.username= current_user.name
+      .icon
+        = link_to '', edit_user_registration_path, class: 'fa fa-cog icon__edit'
+        = link_to '', new_user_registration_path, class: 'fa fa-pencil-square-o icon__setting'
+    .navi__bottom
+      = render 'messages/navibottom'

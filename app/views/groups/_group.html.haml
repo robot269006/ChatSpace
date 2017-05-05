@@ -1,0 +1,7 @@
+%ul.message
+= link_to group_messages_path(group.id) do
+  %p.message__group= group.name
+  - if group.messages.present?
+    %p.message__body= group.messages.all.last.body
+  - else
+    %p.message_body= "まだメッセージがありません"
