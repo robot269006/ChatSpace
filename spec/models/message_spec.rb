@@ -5,6 +5,7 @@ describe Message do
     let(:message) { build(:message) }
     it 'is valid with body, user_id, group_id, created_at and updated_at' do
       message.valid?
+      expect(message).to be_valid
     end
 
     it 'is invalid with a blank body' do
