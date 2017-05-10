@@ -6,15 +6,12 @@ describe MessagesController do
     let(:group)   { create(:group) }
     let(:message) { create(:message) }
     let(:user)    { create(:user) }
-    let(:message_params) do
-      { message: attributes_for(:message), group_id: group, user_id: user }
-    end
 
     describe 'GET #index' do
       it 'assigns @messages instance correctly' do
         messages = create_list(:message, 5, group_id: group.id)
         get :index, params: { group_id: group.id}
-        expect(assigns(:messages)).to match(messages.sort{ |a, b| a.created_at <=> b.created_at })
+        expect(assigns(:messages)).to match(messages.sort_by &:created_at)
       end
 
       it 'renders index correctly' do
@@ -24,6 +21,9 @@ describe MessagesController do
     end
 
     describe 'POST #create' do
+      let(:message_params) do
+        { message: attributes_for(:message), group_id: group, user_id: user }
+      end
       context 'message saving succeeds' do
         it 'saves the messages with @message instance' do
           expect{post :create, params: message_params}.to change(Message, :count).by(1)
@@ -31,7 +31,7 @@ describe MessagesController do
 
         it 'redirects to group messages path' do
           post :create, params: message_params
-          expect(response).to redirect_to root_path(group)
+          expect(response).to redirect_to group_messages_path(group)
         end
       end
 
