@@ -1,7 +1,8 @@
 $(function() {
 
-  function buildHTML(aaaa){
-    console.log(aaaa.body);
+  function buildHTML(datareceiver){
+    var bodyHtml = $('<li class="individualmessage__body">').append(datareceiver.body);
+    return bodyHtml;
   };
 
   $('.write').on('submit', function(e){
@@ -16,7 +17,8 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data){
-      buildHTML(data);
+      var htmlChunk = buildHTML(data);
+      console.log(htmlChunk)
     })
     .fail(function(){
       alert('error');
