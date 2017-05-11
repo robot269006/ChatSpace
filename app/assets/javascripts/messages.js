@@ -1,4 +1,9 @@
 $(function() {
+
+  function buildHTML(aaaa){
+    console.log(aaaa.body);
+  };
+
   $('.write').on('submit', function(e){
     e.preventDefault();
     var textField = $('.write__text');
@@ -11,7 +16,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data){
-      alert('success');
+      buildHTML(data);
     })
     .fail(function(){
       alert('error');
