@@ -1,8 +1,11 @@
 $(function() {
 
   function buildHTML(datareceiver){
-    var bodyHtml = $('<li class="individualmessage__body">').append(datareceiver.body);
-    return bodyHtml;
+    var list = $('<ul class="individualmessage">');
+    var name = list.append($('<li class="individualmessage__name">' + datareceiver.name + '<li>'));
+    var date = list.append($('<li class="individualmessage__date">' + datareceiver.created_at + '<li>'));
+    var body = list.append($('<li class="individualmessage__body">' + datareceiver.body + '<li>'));
+    return list;
   };
 
   $('.write').on('submit', function(e){
@@ -18,10 +21,12 @@ $(function() {
     })
     .done(function(data){
       var htmlChunk = buildHTML(data);
-      console.log(htmlChunk)
+      $('.group__middle').append(htmlChunk);
+      textField.val('');
     })
     .fail(function(){
       alert('error');
     });
   });
 });
+
