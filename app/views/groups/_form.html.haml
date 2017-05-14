@@ -12,7 +12,7 @@
         .user-search-field.chat-group-form__input
           .chat-group-form__search.clearfix
             = form_tag("/search", method: "get") do
-              = text_field_tag "", "", id: "", name: "", class:"chat-group-form__input", placeholder: "追加したいユーザー名を入力してください"
+              = text_field_tag "", "", id: "search_window", name: "", class:"chat-group-form__input", placeholder: "追加したいユーザー名を入力してください"
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :チャットメンバー, class: 'chat-group-form__label'
