@@ -1,4 +1,8 @@
 $(window).on('load', function() {
+  function buildHTML(user) {
+    var html = '<div>' + user.name + '</div>'
+    return html;
+  }
   var
   preSet = null,
   preInput = '',
@@ -12,16 +16,19 @@ $(window).on('load', function() {
       dataType: 'json'
     })
     .done(function(data) {
+      var result;
       data.forEach(function(data) {
         console.log(data.name);
+        result += buildHTML(data);
       });
+      $('#user-search-result').append(result);
     })
     .fail(function() {
       alert('error');
     });
   };
   $('#search_window').on('keyup', function() {
-    input = $('#search_window').val();
+    input = $.trim($(this).val());
     if(preInput !== input){
       clearTimeout(preSet);
       preSet = setTimeout(ajaxSearch, 500);
