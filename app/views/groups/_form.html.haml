@@ -11,8 +11,9 @@
       .chat-group-form__search.clearfix
         .user-search-field.chat-group-form__input
           .chat-group-form__search.clearfix
-            = form_tag("/search", method: "get") do
-              = text_field_tag "", "", id: "search_window", name: "", class:"chat-group-form__input", placeholder: "追加したいユーザー名を入力してください"
+            = form_tag('/search', method: :get) do
+              = text_field_tag :search, "", id: "search_window", class:"chat-group-form__input", name: "keyword", placeholder: "追加したいユーザー名を入力してください"
+          #user-search-result
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :チャットメンバー, class: 'chat-group-form__label'
