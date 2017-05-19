@@ -13,12 +13,12 @@ $(window).on('load', function() {
       url: '/users/search',
       type: "GET",
       data: ("keyword=" + input),
-      dataType: 'json'
+      dataType: 'json',
+      contentType: 'application/json'
     })
     .done(function(data) {
       var result;
       data.forEach(function(data) {
-        console.log(data.name);
         result += buildHTML(data);
       });
       $('#user-search-result').append(result);
