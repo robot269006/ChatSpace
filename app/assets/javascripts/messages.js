@@ -17,8 +17,7 @@ $(function() {
       type: 'POST',
       url: postUrl + '.json',
       data: { message: { body: message } },
-      dataType: 'json',
-      contentType: 'application/json'
+      dataType: 'json'
     })
     .done(function(data){
       var htmlChunk = buildHTML(data);

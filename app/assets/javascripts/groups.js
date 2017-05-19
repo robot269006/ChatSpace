@@ -1,4 +1,4 @@
-$(window).on('load', function() {
+$(document).ready(function() {
   function buildHTML(user) {
     var html = '<div>' + user.name + '</div>'
     return html;
