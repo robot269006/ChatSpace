@@ -28,7 +28,7 @@ $(document).ready(function() {
     });
   };
   $('#search_window').on('keyup', function() {
-    input = $.trim($(this).val());
+    input = $.trim($(this).val().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'));
     if(preInput !== input){
       clearTimeout(preSet);
       preSet = setTimeout(ajaxSearch, 500);

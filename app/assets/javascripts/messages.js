@@ -11,7 +11,7 @@ $(function() {
   $('.write').on('submit', function(e){
     e.preventDefault();
     var textField = $('.write__text');
-    var message = textField.val();
+    var message = textField.val().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     var postUrl = location.href;
     $.ajax({
       type: 'POST',
