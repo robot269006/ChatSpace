@@ -7,6 +7,10 @@ $(document).ready(function() {
   preSet = null,
   preInput = '',
   input = '',
+  sanitize = function(input){
+    input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    return input;
+  }
   ajaxSearch = function () {
     $.ajax({
       // this hands over keyqord=xxx query data in json format to users/search path
@@ -28,7 +32,8 @@ $(document).ready(function() {
     });
   };
   $('#search_window').on('keyup', function() {
-    input = $.trim($(this).val().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'));
+    input = $.trim($(this).val());
+    sanitize(input);
     if(preInput !== input){
       clearTimeout(preSet);
       preSet = setTimeout(ajaxSearch, 500);

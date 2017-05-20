@@ -8,10 +8,16 @@ $(function() {
     return list;
   };
 
+  sanitize = function(input){
+    input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    return input;
+  }
+
   $('.write').on('submit', function(e){
     e.preventDefault();
     var textField = $('.write__text');
-    var message = textField.val().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    var message = textField.val();
+    sanitize(message);
     var postUrl = location.href;
     $.ajax({
       type: 'POST',
