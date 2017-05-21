@@ -18,6 +18,7 @@
       = render @messages
     .group__bottom
       = form_for [@group, @message], html: {class: 'write'} do |f|
+        = f.hidden_field :user, class: 'user__name', value: current_user.name
         = f.text_field :body, class: 'write__text', placeholder: 'type a message'
         .write__icon <i class="fa fa-picture-o" aria-hidden="true"></i>
         = f.submit 'Send', class: 'sendbutton'

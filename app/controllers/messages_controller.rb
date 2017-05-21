@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def index
     @groups = current_user.groups.includes(:users)
     @message = Message.new
-    @messages = Message.where(group_id: params[:group_id]).order('created_at ASC').includes(:user)
+    @messages = Message.where(group_id: params[:group_id]).order('created_at DESC').includes(:user)
   end
 
   def new; end
@@ -12,7 +12,10 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
-      redirect_to group_messages_path(@group), notice: "メッセージが作成されました"
+      respond_to do |format|
+        format.html { redirect_to group_messages_path(@group), notice: "メッセージが作成されました"}
+        format.json { render 'messages', handlers: 'jbuilder' }
+      end
     else
       flash.now[:alert]="メッセージの作成に失敗しました"
       render :index
