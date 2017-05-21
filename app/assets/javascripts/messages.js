@@ -2,9 +2,8 @@ $(function() {
 
   //append name, date, body to ul and li classes in _messages.haml partial files
   function buildHTML(datareceiver){
-    var nameField = $('.user__name').val();
     var list = $('<ul class="individualmessage">');
-    var name = list.append($('<li class="individualmessage__name">' + nameField + '<li>'));
+    var name = list.append($('<li class="individualmessage__name">' + datareceiver.name + '<li>'));
     var date = list.append($('<li class="individualmessage__date">' + datareceiver.created_at + '<li>'));
     var body = list.append($('<li class="individualmessage__body">' + datareceiver.body + '<li>'));
     return list;
