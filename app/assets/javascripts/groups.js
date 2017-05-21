@@ -3,13 +3,13 @@ $(document).ready(function() {
     var html = '<div>' + user.name + '</div>'
     return html;
   }
-  var
-  preSet = null,
-  preInput = '',
-  input = '',
-  sanitize = function(input){
-    input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    return input;
+  var preSet = null;
+  var preInput = "";
+  var input = "";
+  var result = "";
+  sanitize = function(target){
+    target.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    return target;
   }
   ajaxSearch = function () {
     $.ajax({
@@ -21,7 +21,6 @@ $(document).ready(function() {
       contentType: 'application/json'
     })
     .done(function(data) {
-      var result;
       data.forEach(function(data) {
         result += buildHTML(data);
       });
