@@ -1,7 +1,7 @@
 $(document).ready(function() {
   //function that generates div that contains user name
-  function buildHTML(user) {
-    var html = '<div>' + user.name + '</div>'
+  function buildHTML(datareceiver) {
+    var html = '<div>' + datareceiver.name + '</div>'
     return html;
   }
   //preset all the variables, to prevent "undefined" values
