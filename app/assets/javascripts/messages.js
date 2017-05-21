@@ -24,7 +24,7 @@ $(function() {
     var postUrl = location.href;
     $.ajax({
       type: 'POST',
-      url: postUrl + '.json',
+      url: postUrl,
       data: { message: { body: message } },
       dataType: 'json'
     })
