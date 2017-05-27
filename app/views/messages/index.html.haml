@@ -17,11 +17,10 @@
     .group__middle
       = render @messages
     .group__bottom
-      .group_bottom--clearfix
-      = form_for [@group, @message] do |f|
-        = f.hidden_field :user, class: 'group__bottom__name', value: current_user.name
-        = f.text_field :body, class: 'group__bottom__text', placeholder: 'type a message'
-        = f.label :image, class: "group__bottom__image" do
-          %i.fa.fa-picture-o
-          = f.file_field :image, type: "hidden", class: "group__bottom__image__uploader"
-        = f.submit 'Send', class: 'group__bottom__sendbutton'
+      = form_for [@group, @message], html: { class: 'group__bottom__form' } do |f|
+        = f.hidden_field :user, class: 'group__bottom__form__name', value: current_user.name
+        = f.text_field :body, class: 'group__bottom__form__text', placeholder: 'type a message'
+        / = f.label :image, class: 'group__bottom__form__image' do
+        /   %i.fa.fa-picture-o
+        /   = f.file_field :image, type: "hidden", class: 'group__bottom__form__image__uploader'
+        = f.submit "Send", class: 'group__bottom__form__sendbutton'

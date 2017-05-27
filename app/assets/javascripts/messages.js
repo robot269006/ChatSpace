@@ -15,9 +15,9 @@ $(function() {
   }
 
   //retrieve typed in message
-  $('.write').on('submit', function(e){
+  $('.group__bottom__form').on('submit', function(e){
     e.preventDefault();
-    var textField = $('.write__text');
+    var textField = $('.group__bottom__form__text');
     var message = textField.val();
     sanitize(message);
     var postUrl = location.href;

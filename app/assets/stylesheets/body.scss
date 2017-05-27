@@ -107,34 +107,33 @@
       height: 50px;
       background-color: #AAAAAA;
       padding: 20px 40px;
-      &--clearfix:after {
-        @include clearfix();
-      }
-      &__text {
+      &__form__text {
         height: 50px;
         width: calc(100vw - #{$nav-width} - #{$bottom-padding} - 125px);
         @include fontset(16px, #434A54);
         line-height: 50px;
         float: left;
       }
-      &__image {
-        float: left;
+      &__form__image {
         color: #434a54;
-        &__fa {
-          float: left;
+        width: 20px;
+        height: 60px;
+        float: left;
+        .fa {
+          margin: 20px 5px 0;
         }
         &__uploader {
-          float: left;
+          cursor: pointer;
         }
       }
-      &__sendbutton {
+      &__form__sendbutton {
         height: 50px;
         background-color: $blue-bg;
         @include fontset(16px,$white-bg);
         text-align: center;
         line-height: 50px;
         padding: 0 20px;
-        margin: 5px 0 5px 15px;
+        margin: 5px 0 5px 5px;
         float: left;
       }
     }
