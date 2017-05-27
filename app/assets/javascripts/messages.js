@@ -37,5 +37,10 @@ $(function() {
       alert('error');
     });
   });
+
+  //activate image file selection
+  $('.fa fa-picture-o').on('click', function(){
+    $('#message-image').click();
+  });
 });
 
