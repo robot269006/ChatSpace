@@ -21,10 +21,13 @@ $(function() {
     var message = textField.val();
     sanitize(message);
     var postUrl = location.href;
+    var formData = new FormData($('form#new_message').get()[0]); //all form data to be posted to requested URL
     $.ajax({
       type: 'POST',
       url: postUrl,
-      data: { message: { body: message } },
+      data: formData,
+      processData: false, //object not to be transcripted to query
+      contentType: false,
       dataType: 'json'
     })
     //append resulting li elements to .group__middle class

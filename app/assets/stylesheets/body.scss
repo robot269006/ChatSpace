@@ -121,9 +121,10 @@
         float: left;
         .fa {
           margin: 20px 5px 0;
-          &__uploader {
-            cursor: pointer;
-          }
+        }
+        &__uploader {
+          cursor: pointer;
+          display: none;
         }
       }
       &__form__sendbutton {
