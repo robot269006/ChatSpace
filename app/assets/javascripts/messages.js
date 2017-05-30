@@ -7,9 +7,10 @@ $(function() {
     var date1 = datareceiver.created_at.replace(/-/g, '/');
     var date2 = date1.replace('T', ' ');
     var date3 = date2.replace(/.\d\d\d.$/, '');
-    var name = list.append($('<li class="individualmessage__name">' + datareceiver.name + '<li>'));
-    var date = list.append($('<li class="individualmessage__date">' + date3 + '<li>'));
-    var body = list.append($('<li class="individualmessage__body">' + datareceiver.body + '<li>'));
+    var name  = list.append($('<li class="individualmessage__name">' + datareceiver.name + '</li>'));
+    var date  = list.append($('<li class="individualmessage__date">' + date3 + '</li>'));
+    var body  = list.append($('<li class="individualmessage__body">' + datareceiver.body + '</li>'));
+    var image = list.append($('<li class="individualmessage__image">' + "<img src=" + datareceiver.image.url + ">" + '</li>'))
     return list;
   };
   //XSS -> prevent malicious parameters being sent
@@ -18,7 +19,7 @@ $(function() {
     return target;
   }
 
-  //retrieve typed in message
+  //retrieve typed in messagea
   $('.group__bottom__form').on('submit', function(e){
     e.preventDefault();
     var textField = $('.group__bottom__form__text');
