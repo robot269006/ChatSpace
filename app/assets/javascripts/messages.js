@@ -4,13 +4,13 @@ $(function() {
   function buildHTML(datareceiver){
     var list = $('<ul class="individualmessage">');
     //date cleaning
-    var date1 = datareceiver.created_at.replace(/-/g, '/');
-    var date2 = date1.replace('T', ' ');
-    var date3 = date2.replace(/.\d\d\d.$/, '');
+    var tempdate  = datareceiver.created_at.replace('T', ' ').replace(/-/g, '/').replace(/.\d\d\d.$/, '');
     var name  = list.append($('<li class="individualmessage__name">' + datareceiver.name + '</li>'));
-    var date  = list.append($('<li class="individualmessage__date">' + date3 + '</li>'));
+    var date  = list.append($('<li class="individualmessage__date">' + tempdate + '</li>'));
     var body  = list.append($('<li class="individualmessage__body">' + datareceiver.body + '</li>'));
-    var image = list.append($('<li class="individualmessage__image">' + "<img src=" + datareceiver.image.url + ">" + '</li>'))
+    if (datareceiver.image === null) {
+    } else { var image = list.append($('<li class="individualmessage__image">' + "<img src=" + datareceiver.image.url + ">" + '</li>'));
+    }
     return list;
   };
   //XSS -> prevent malicious parameters being sent
@@ -22,9 +22,7 @@ $(function() {
   //retrieve typed in messagea
   $('.group__bottom__form').on('submit', function(e){
     e.preventDefault();
-    var textField = $('.group__bottom__form__text');
-    var message = textField.val();
-    sanitize(message);
+    sanitize(($('.group__bottom__form__text')).val());
     var postUrl = location.href;
     var formData = new FormData($('form#new_message').get()[0]); //all form data to be posted to requested URL
     $.ajax({
@@ -39,7 +37,7 @@ $(function() {
     .done(function(data){
       var htmlChunk = buildHTML(data);
       $('.group__middle').append(htmlChunk);
-      textField.val('');
+      $('.group__bottom__form__text').val('');
     })
     .fail(function(){
       alert('error');
