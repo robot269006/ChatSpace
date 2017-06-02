@@ -14,10 +14,10 @@ $(function() {
     return list;
   };
   //XSS -> prevent malicious parameters being sent
-  sanitize = function(target){
+  function sanitize(target){
     target.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     return target;
-  }
+  };
 
   //retrieve typed in messagea
   $('.group__bottom__form').on('submit', function(e){
@@ -48,5 +48,29 @@ $(function() {
   $('.fa fa-picture-o').on('click', function(){
     $('#message-image').click();
   });
+
+  //updater
+  function autoupdate(){
+    updateUrl = location.href;
+    $.ajax({
+      type: "GET",
+      url: updateUrl
+    })
+    .done(function(data){
+      $('.group__middle').html(data);
+    })
+    .fail(function(){
+      alert('auto-upload failure');
+    });
+  };
+
+  //autoupdate function when the page is initially loaded
+  $(document).on('load', function(e){
+    e.preventDefault();
+    autoupdate();
+    setInterval("autoupdate()", 5000);
+  });
+
+
 });
 

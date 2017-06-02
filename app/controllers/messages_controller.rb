@@ -4,7 +4,11 @@ class MessagesController < ApplicationController
   def index
     @groups = current_user.groups.includes(:users)
     @message = Message.new
-    @messages = Message.where(group_id: params[:group_id]).order('created_at ASC').includes(:user)
+    @messages = @group.messages.order('created_at ASC').includes(:user)
+    #respond_to
+    #  html -> redirect_to index path
+    #  json -> render messages, handlers: 'jbuilder'
+    #end
   end
 
   def new; end
