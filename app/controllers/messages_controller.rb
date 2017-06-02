@@ -5,10 +5,6 @@ class MessagesController < ApplicationController
     @groups = current_user.groups.includes(:users)
     @message = Message.new
     @messages = @group.messages.order('created_at ASC').includes(:user)
-    #respond_to
-    #  html -> redirect_to index path
-    #  json -> render messages, handlers: 'jbuilder'
-    #end
   end
 
   def new; end
