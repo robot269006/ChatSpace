@@ -3,9 +3,14 @@ $(function() {
   //append name, date, body to ul and li classes in _messages.haml partial files
   function buildHTML(datareceiver){
     var list = $('<ul class="individualmessage">');
-    var name = list.append($('<li class="individualmessage__name">' + datareceiver.name + '<li>'));
-    var date = list.append($('<li class="individualmessage__date">' + datareceiver.created_at + '<li>'));
-    var body = list.append($('<li class="individualmessage__body">' + datareceiver.body + '<li>'));
+    //date cleaning
+    var tempdate  = datareceiver.created_at.replace('T', ' ').replace(/-/g, '/').replace(/.\d\d\d.$/, '');
+    var name  = list.append($('<li class="individualmessage__name">' + datareceiver.name + '</li>'));
+    var date  = list.append($('<li class="individualmessage__date">' + tempdate + '</li>'));
+    var body  = list.append($('<li class="individualmessage__body">' + datareceiver.body + '</li>'));
+    if (datareceiver.image === null) {
+    } else { var image = list.append($('<li class="individualmessage__image">' + "<img src=" + datareceiver.image.url + ">" + '</li>'));
+    }
     return list;
   };
   //XSS -> prevent malicious parameters being sent
@@ -14,28 +19,34 @@ $(function() {
     return target;
   }
 
-  //retrieve typed in message
-  $('.write').on('submit', function(e){
+  //retrieve typed in messagea
+  $('.group__bottom__form').on('submit', function(e){
     e.preventDefault();
-    var textField = $('.write__text');
-    var message = textField.val();
-    sanitize(message);
+    sanitize(($('.group__bottom__form__text')).val());
     var postUrl = location.href;
+    var formData = new FormData($('form#new_message').get()[0]); //all form data to be posted to requested URL
     $.ajax({
       type: 'POST',
       url: postUrl,
-      data: { message: { body: message } },
+      data: formData,
+      processData: false, //object not to be transcripted to query
+      contentType: false,
       dataType: 'json'
     })
     //append resulting li elements to .group__middle class
     .done(function(data){
       var htmlChunk = buildHTML(data);
       $('.group__middle').append(htmlChunk);
-      textField.val('');
+      $('.group__bottom__form__text').val('');
     })
     .fail(function(){
       alert('error');
     });
+  });
+
+  //activate image file selection
+  $('.fa fa-picture-o').on('click', function(){
+    $('#message-image').click();
   });
 });
 

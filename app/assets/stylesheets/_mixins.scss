@@ -3,9 +3,8 @@
   color: $color;
 }
 
-//@mixin clearfix(){
-//  contents: block;
-//  display: both;
-//}
-
-//settings of clearfix
+@mixin clearfix(){
+ clear: both;
+ content: block;
+ display: both;
+}
