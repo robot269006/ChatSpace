@@ -23,11 +23,10 @@ $(function() {
   $('.group__bottom__form').on('submit', function(e){
     e.preventDefault();
     sanitize(($('.group__bottom__form__text')).val());
-    var postUrl = location.href;
     var formData = new FormData($('form#new_message').get()[0]); //all form data to be posted to requested URL
     $.ajax({
       type: 'POST',
-      url: postUrl,
+      url: location.href,
       data: formData,
       processData: false, //object not to be transcripted to query
       contentType: false,
@@ -49,26 +48,33 @@ $(function() {
     $('#message-image').click();
   });
 
+  // variable to set interval
+  var timer;
   //updater
-  function autoupdate(){
-    updateUrl = location.href;
+  function autoUpdate(){
+    // var latestData =
     $.ajax({
       type: "GET",
-      url: updateUrl
+      url: location.href
+      // data: latestData
+      // dataType: 'json'
     })
     .done(function(data){
-      $('.group__middle').html(data);
+      // var latestChunk = buildHTML(data)
+      // $('.group__middle').append(latestChunk);
+      console.log("testing");
     })
     .fail(function(){
       alert('auto-upload failure');
+      clearTimeout(timer);
     });
   };
 
   //autoupdate function when the page is initially loaded
-  $(document).on('load', function(e){
-    e.preventDefault();
-    autoupdate();
-    setInterval("autoupdate()", 5000);
+  $(document).ready(function(){
+    //run update the first time to kick it off
+    autoUpdate();
+    timer = setInterval(function(){ autoUpdate(); }, 5000);
   });
 
 
