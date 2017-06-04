@@ -52,16 +52,11 @@ $(function() {
   var timer;
   //updater
   function autoUpdate(){
-    // var latestData =
     $.ajax({
-      type: "GET",
-      url: location.href
-      // data: latestData
-      // dataType: 'json'
     })
     .done(function(data){
-      // var latestChunk = buildHTML(data)
-      // $('.group__middle').append(latestChunk);
+      var url = $(".group__middle").data('group-id')
+      $('.group__middle').load("/groups/" + url + "/messages" + " .individualmessage");
       console.log("testing");
     })
     .fail(function(){
