@@ -14,20 +14,19 @@ $(function() {
     return list;
   };
   //XSS -> prevent malicious parameters being sent
-  sanitize = function(target){
+  function sanitize(target){
     target.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     return target;
-  }
+  };
 
   //retrieve typed in messagea
   $('.group__bottom__form').on('submit', function(e){
     e.preventDefault();
     sanitize(($('.group__bottom__form__text')).val());
-    var postUrl = location.href;
     var formData = new FormData($('form#new_message').get()[0]); //all form data to be posted to requested URL
     $.ajax({
       type: 'POST',
-      url: postUrl,
+      url: location.href,
       data: formData,
       processData: false, //object not to be transcripted to query
       contentType: false,
@@ -48,5 +47,30 @@ $(function() {
   $('.fa fa-picture-o').on('click', function(){
     $('#message-image').click();
   });
+
+  // variable to set interval
+  var timer;
+  //updater
+  function autoUpdate(){
+    $.ajax({
+    })
+    .done(function(data){
+      var url = $(".group__middle").data('group-id')
+      $('.group__middle').load("/groups/" + url + "/messages" + " .individualmessage");
+    })
+    .fail(function(){
+      alert('auto-upload failure');
+      clearTimeout(timer);
+    });
+  };
+
+  //autoupdate function when the page is initially loaded
+  $(document).ready(function(){
+    //run update the first time to kick it off
+    autoUpdate();
+    timer = setInterval(function(){ autoUpdate(); }, 5000);
+  });
+
+
 });
 

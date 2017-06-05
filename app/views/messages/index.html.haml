@@ -14,7 +14,7 @@
         - @group.users.each do |n|
           %p.groupdata__memberlist= n.name
       = link_to 'Edit', edit_group_path(@group), class: 'editbutton'
-    .group__middle
+    .group__middle{ "data-group-id": @group.id }
       = render @messages
     .group__bottom
       = form_for [@group, @message], html: { class: 'group__bottom__form' } do |f|
