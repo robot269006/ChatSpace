@@ -57,8 +57,6 @@ $(function() {
     .done(function(data){
       var url = $(".group__middle").data('group-id')
       $('.group__middle').load("/groups/" + url + "/messages" + " .individualmessage");
-      console.log("testing");
-      console.log($('.individualmessage').last(0));
     })
     .fail(function(){
       alert('auto-upload failure');
